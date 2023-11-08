@@ -8,6 +8,7 @@ public class Fruit : MonoBehaviour {
     private CircleCollider2D circleCollider;
 
     public GameObject collected;
+    public int Score;
 
     // Start is called before the first frame update
     void Start() {
@@ -25,6 +26,8 @@ public class Fruit : MonoBehaviour {
             spriteRenderer.enabled = false;
             circleCollider.enabled = false;
             collected.SetActive(true);
+            GameController.instance.totalScore += Score;
+            GameController.instance.UpdateScoreText();  
             Destroy(gameObject, 0.2f);
         }
     }

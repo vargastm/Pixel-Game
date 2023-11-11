@@ -5,12 +5,14 @@ using UnityEngine;
 public class Player : MonoBehaviour {
   public float Speed;
   public float JumpForce;
+  public int life;
   public bool isJumping;
   public bool doubleJump;
   public SpriteRenderer sprite;
 
   private Rigidbody2D rigid2d;
   private Animator animator;
+  private bool recovery;
 
   // Start is called before the first frame update
   void Start()  {
@@ -57,19 +59,23 @@ public class Player : MonoBehaviour {
   }
 
   public void Hit() {
-    StartCoroutine(Flick());
+    if(recovery == false) {
+      life--;
+      GameController.instance.UpdateLifeText();  
+      StartCoroutine(Flick());
+    }
   }
 
   IEnumerator Flick() {
+    recovery = true;
     sprite.color = new Color (1, 1, 1, 0);
     yield return new WaitForSeconds(0.2f);
     sprite.color = new Color (1, 1, 1, 1);
     yield return new WaitForSeconds(0.2f);
-    sprite.color = new Color (1, 1, 1, 1);
-    yield return new WaitForSeconds(0.2f);
     sprite.color = new Color (1, 1, 1, 0);
     yield return new WaitForSeconds(0.2f);
     sprite.color = new Color (1, 1, 1, 1);
+    recovery = false;
   }
 
   void OnCollisionEnter2D(Collision2D colission) {

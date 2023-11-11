@@ -7,6 +7,8 @@ public class Player : MonoBehaviour {
   public float JumpForce;
   public bool isJumping;
   public bool doubleJump;
+  public SpriteRenderer sprite;
+
   private Rigidbody2D rigid2d;
   private Animator animator;
 
@@ -52,6 +54,22 @@ public class Player : MonoBehaviour {
         doubleJump = false;
       }
     }
+  }
+
+  public void Hit() {
+    StartCoroutine(Flick());
+  }
+
+  IEnumerator Flick() {
+    sprite.color = new Color (1, 1, 1, 0);
+    yield return new WaitForSeconds(0.2f);
+    sprite.color = new Color (1, 1, 1, 1);
+    yield return new WaitForSeconds(0.2f);
+    sprite.color = new Color (1, 1, 1, 1);
+    yield return new WaitForSeconds(0.2f);
+    sprite.color = new Color (1, 1, 1, 0);
+    yield return new WaitForSeconds(0.2f);
+    sprite.color = new Color (1, 1, 1, 1);
   }
 
   void OnCollisionEnter2D(Collision2D colission) {

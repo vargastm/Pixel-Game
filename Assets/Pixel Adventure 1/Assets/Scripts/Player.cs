@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
   public float Speed;
@@ -9,6 +10,7 @@ public class Player : MonoBehaviour {
   public bool isJumping;
   public bool doubleJump;
   public SpriteRenderer sprite;
+  public GameObject gameOver;
 
   private Rigidbody2D rigid2d;
   private Animator animator;
@@ -18,6 +20,7 @@ public class Player : MonoBehaviour {
   void Start()  {
     rigid2d = GetComponent<Rigidbody2D>();
     animator = GetComponent<Animator>();
+    Time.timeScale = 1;
   }
 
   // Update is called once per frame
@@ -45,6 +48,13 @@ public class Player : MonoBehaviour {
     }
   }
 
+  void Death() {
+    if(life <= 0) {
+      gameOver.SetActive(true);
+      Time.timeScale = 0;
+    }
+  }
+
   void Jump() {
     if(Input.GetButtonDown("Jump")) {
       if(!isJumping) {
@@ -61,6 +71,7 @@ public class Player : MonoBehaviour {
   public void Hit() {
     if(recovery == false) {
       life--;
+      Death();
       GameController.instance.UpdateLifeText();  
       StartCoroutine(Flick());
     }
@@ -76,6 +87,10 @@ public class Player : MonoBehaviour {
     yield return new WaitForSeconds(0.2f);
     sprite.color = new Color (1, 1, 1, 1);
     recovery = false;
+  }
+
+  public void RestartGame() {
+    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
   }
 
   void OnCollisionEnter2D(Collision2D colission) {

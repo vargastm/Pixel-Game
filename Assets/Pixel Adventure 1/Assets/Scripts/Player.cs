@@ -21,6 +21,7 @@ public class Player : MonoBehaviour {
     rigid2d = GetComponent<Rigidbody2D>();
     animator = GetComponent<Animator>();
     Time.timeScale = 1;
+    DontDestroyOnLoad(gameObject);
   }
 
   // Update is called once per frame

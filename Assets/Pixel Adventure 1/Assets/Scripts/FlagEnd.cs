@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class FinalPoint : MonoBehaviour {
   private void OnTriggerEnter2D(Collider2D collision) {
     if(collision.CompareTag("Player")) {
-      SceneManager.LoadScene(0);
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex + 1);
     }
   }
 }

@@ -11846,11 +11846,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6477117219501077237, guid: 2a5d708bf49fb08499db5f7e483aa4f1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.02
+      value: 0.294
       objectReference: {fileID: 0}
     - target: {fileID: 6477117219501077237, guid: 2a5d708bf49fb08499db5f7e483aa4f1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.99
+      value: 1.036
       objectReference: {fileID: 0}
     - target: {fileID: 7790550710877257031, guid: 2a5d708bf49fb08499db5f7e483aa4f1, type: 3}
       propertyPath: gameOver

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8826512467489929057}
   - component: {fileID: 6290118318390969208}
   - component: {fileID: 3474935009580067747}
+  - component: {fileID: 1529266636897160053}
   m_Layer: 0
   m_Name: FlagEnd
   m_TagString: Untagged
@@ -143,3 +144,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 036e9fd986c92bb4b845ef538770de3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1529266636897160053
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574247840479806350}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9f94cdfae5b58e349b5336f875f3c3f2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

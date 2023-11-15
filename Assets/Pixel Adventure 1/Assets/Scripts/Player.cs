@@ -10,18 +10,30 @@ public class Player : MonoBehaviour {
   public bool isJumping;
   public bool doubleJump;
   public SpriteRenderer sprite;
-  public GameObject gameOver;
-
+  
+  private GameManager gameManager;
   private Rigidbody2D rigid2d;
   private Animator animator;
   private bool recovery;
+
+  private static Player instance;
+
+  void Awake() {
+    if (instance == null) {
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+        gameManager = FindObjectOfType<GameManager>();
+    } else {
+        Destroy(gameObject);
+    }
+  } 
+
 
   // Start is called before the first frame update
   void Start()  {
     rigid2d = GetComponent<Rigidbody2D>();
     animator = GetComponent<Animator>();
     Time.timeScale = 1;
-    DontDestroyOnLoad(gameObject);
   }
 
   // Update is called once per frame
@@ -51,9 +63,15 @@ public class Player : MonoBehaviour {
 
   void Death() {
     if(life <= 0) {
-      gameOver.SetActive(true);
-      Time.timeScale = 0;
+      SceneManager.LoadScene(0);
     }
+  }
+
+  public void ResetLife() {
+    life = 3;
+    GameController.instance.UpdateLifeText();  
+    GameController.instance.totalScore = 0;
+    GameController.instance.UpdateScoreText();
   }
 
   void Jump() {
@@ -88,10 +106,6 @@ public class Player : MonoBehaviour {
     yield return new WaitForSeconds(0.2f);
     sprite.color = new Color (1, 1, 1, 1);
     recovery = false;
-  }
-
-  public void RestartGame() {
-    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
   }
 
   void OnCollisionEnter2D(Collision2D colission) {

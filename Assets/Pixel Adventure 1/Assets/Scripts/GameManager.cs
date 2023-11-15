@@ -1,17 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     public Transform point;
 
-    // Start is called before the first frame update
     void Start() {
-        FindObjectOfType<Player>().transform.position = point.position;
+        MovePlayerToSpawnPoint();
     }
 
-    // Update is called once per frame
-    void Update() {
-        
+    public void MovePlayerToSpawnPoint()  {
+        Player player = FindObjectOfType<Player>();
+        player.transform.position = point.position;
     }
 }

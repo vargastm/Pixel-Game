@@ -93,6 +93,15 @@ public class Player : MonoBehaviour {
       Death();
       GameController.instance.UpdateLifeText();  
       StartCoroutine(Flick());
+      FindObjectOfType<GameManager>().MovePlayerToSpawnPoint();
+      ResetPlatformsPosition();
+    }
+  }
+
+  void ResetPlatformsPosition() {
+    FallingPlatform[] platforms = FindObjectsOfType<FallingPlatform>();
+    foreach (FallingPlatform platform in platforms) {
+      platform.ResetPosition();
     }
   }
 

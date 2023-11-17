@@ -90,12 +90,12 @@ public class Player : MonoBehaviour {
   public void Hit() {
     if(recovery == false) {
       life--;
+    }
       Death();
       GameController.instance.UpdateLifeText();  
       StartCoroutine(Flick());
       FindObjectOfType<GameManager>().MovePlayerToSpawnPoint();
       ResetPlatformsPosition();
-    }
   }
 
   void ResetPlatformsPosition() {
@@ -108,11 +108,7 @@ public class Player : MonoBehaviour {
   IEnumerator Flick() {
     recovery = true;
     sprite.color = new Color (1, 1, 1, 0);
-    yield return new WaitForSeconds(0.2f);
-    sprite.color = new Color (1, 1, 1, 1);
-    yield return new WaitForSeconds(0.2f);
-    sprite.color = new Color (1, 1, 1, 0);
-    yield return new WaitForSeconds(0.2f);
+    yield return new WaitForSeconds(0.3f);
     sprite.color = new Color (1, 1, 1, 1);
     recovery = false;
   }

@@ -25,11 +25,8 @@ public class Saw : MonoBehaviour {
     }
 
     private void OnTriggerStay2D(Collider2D collision) {
-        Debug.Log("OnTriggerEnter2D called");
         if(collision.CompareTag("Player")) {
-            Debug.Log("OnTriggerEnter2D called2");
             collision.GetComponent<Player>().Hit();
         }
     }
-
 }

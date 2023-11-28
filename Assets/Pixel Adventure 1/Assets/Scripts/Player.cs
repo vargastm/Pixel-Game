@@ -9,6 +9,7 @@ public class Player : MonoBehaviour {
   public int life;
   public bool isJumping;
   public bool doubleJump;
+  public bool isBlowing;
   public SpriteRenderer sprite;
   
   private GameManager gameManager;
@@ -75,7 +76,7 @@ public class Player : MonoBehaviour {
   }
 
   void Jump() {
-    if(Input.GetButtonDown("Jump")) {
+    if(Input.GetButtonDown("Jump") && !isBlowing) {
       if(!isJumping) {
         rigid2d.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
         doubleJump = true;
@@ -123,6 +124,19 @@ public class Player : MonoBehaviour {
   void OnCollisionExit2D(Collision2D colission) {
     if(colission.gameObject.layer == 8) {
       isJumping = true;
+    }
+  }
+
+
+  void OnTriggerStay2D(Collider2D collider) {
+    if(collider.gameObject.layer == 11) {
+      isBlowing = true;
+    }
+  }
+
+  void OnTriggerExit2D(Collider2D collider) {
+    if(collider.gameObject.layer == 11) {
+      isBlowing = false;
     }
   }
 }

@@ -8,7 +8,7 @@ public class Player : MonoBehaviour {
   public float JumpForce;
   public int life;
   public bool isJumping;
-  public bool doubleJump;
+  //public bool doubleJump;
   public bool isBlowing;
   public SpriteRenderer sprite;
   
@@ -64,12 +64,12 @@ public class Player : MonoBehaviour {
 
   void Death() {
     if(life <= 0) {
-      SceneManager.LoadScene(0);
+      SceneManager.LoadScene(9);
     }
   }
 
   public void ResetLife() {
-    life = 3;
+    life = 10;
     GameController.instance.UpdateLifeText();  
     GameController.instance.totalScore = 0;
     GameController.instance.UpdateScoreText();
@@ -79,12 +79,13 @@ public class Player : MonoBehaviour {
     if(Input.GetButtonDown("Jump") && !isBlowing) {
       if(!isJumping) {
         rigid2d.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
-        doubleJump = true;
+        //doubleJump = true;
         animator.SetBool("jump", true);
-      } else if(doubleJump) {
-        rigid2d.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
-        doubleJump = false;
-      }
+      } 
+      //else if(doubleJump) {
+       // rigid2d.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
+        //doubleJump = false;
+      //}
     }
   }
 

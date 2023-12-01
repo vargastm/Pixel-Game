@@ -12,8 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/game_over.unity
     guid: 974e1b8f391f2fd4b9ee5dc0be303e9b
   - enabled: 1
-    path: Assets/Scenes/gameover.unity
-    guid: 67223e9b280569d41b09400394a54088
+    path: Assets/Scenes/mainmenu.unity
+    guid: c9c7f13dbb999ec4aadbfde4d5e1c82d
   - enabled: 1
     path: Assets/Scenes/lvl_1.unity
     guid: 377495d3a37d99342b289b2d9e16447c
@@ -35,4 +35,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/lvl_7.unity
     guid: 5297d9969cccaf4498f0c80723190fec
+  - enabled: 1
+    path: Assets/Scenes/congratulations.unity
+    guid: 8a40b1c48ad6a76419a1a6e42e61703e
+  - enabled: 1
+    path: Assets/Scenes/gameover.unity
+    guid: 67223e9b280569d41b09400394a54088
   m_configObjects: {}

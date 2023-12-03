@@ -7,6 +7,9 @@
 
 **Pixel Game** is my first experience developing a game, initially exploring everything that makes up a 2D platform game to the fullest.
 
+### 🎮 Prototype
+[Itch.io](https://vargastm.itch.io/pixel-game)
+
 ### 📝 License
 
 **Pixel Game** is released under the [MIT License](https://github.com/vargastm/Pixel-Game/blob/main/LICENSE) para mais detalhes.

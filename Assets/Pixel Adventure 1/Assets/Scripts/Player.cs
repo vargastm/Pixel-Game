@@ -44,8 +44,11 @@ public class Player : MonoBehaviour {
   }
 
   void Move() {
-    Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
-    transform.position += movement * Time.deltaTime * Speed;
+    //Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
+    //transform.position += movement * Time.deltaTime * Speed;
+
+    float movement = Input.GetAxis("Horizontal");
+    rigid2d.velocity = new Vector2 (movement * Speed, rigid2d.velocity.y);
 
     if(Input.GetAxis("Horizontal") > 0f) {
       animator.SetBool("walk", true);
@@ -78,7 +81,9 @@ public class Player : MonoBehaviour {
   void Jump() {
     if(Input.GetButtonDown("Jump") && !isBlowing) {
       if(!isJumping) {
-        rigid2d.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
+        //rigid2d.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
+        rigid2d.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
+        isJumping = true;
         //doubleJump = true;
         animator.SetBool("jump", true);
       } 
@@ -122,11 +127,11 @@ public class Player : MonoBehaviour {
     }
   }
 
-  void OnCollisionExit2D(Collision2D colission) {
-    if(colission.gameObject.layer == 8) {
-      isJumping = true;
-    }
-  }
+  //void OnCollisionExit2D(Collision2D colission) {
+    //if(colission.gameObject.layer == 8) {
+   //   isJumping = true;
+   // }
+  //}
 
 
   void OnTriggerStay2D(Collider2D collider) {
